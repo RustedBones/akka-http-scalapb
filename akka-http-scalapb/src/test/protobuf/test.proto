@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package fr.davit.generated;
+
+message TestMessage {
+    string stringField  = 1;
+    int32 numberFiled   = 2;
+}
