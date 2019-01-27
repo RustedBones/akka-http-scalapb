@@ -31,6 +31,7 @@ lazy val commonSettings = Seq(
     Dependencies.Provided.akkaStream,
     Dependencies.scalaPB,
     Dependencies.Test.akkaHttpTestkit,
+    Dependencies.Test.akkaTestkit,
     Dependencies.Test.scalaTest
   )
 )

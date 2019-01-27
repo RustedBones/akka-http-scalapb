@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-Apache%202-brightgreen.svg?style=flat)](LICENSE)
 
 
-akka-http protobuf and json marshalling/unmarshalling for ScalaPb messages
+akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
 
 ## Versions
