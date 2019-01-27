@@ -11,7 +11,7 @@ akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
 | Version | Release date | Akka Http version | ScalaPB version          | Scala versions      |
 | ------- | ------------ | ----------------- | ------------------------ | ------------------- |
-| `0.1.0` |              | `10.1.7`          | `0.8.4` (`0.7.2` json4s) | `2.11.12`, `2.12.8` |
+| `0.1.0` | 2019-01-27   | `10.1.7`          | `0.8.4` (`0.7.2` json4s) | `2.11.12`, `2.12.8` |
 
 The complete list can be found in the [CHANGELOG](CHANGELOG.md) file.
 
@@ -39,7 +39,7 @@ For more details, see the akka-http 10.1.x [release notes](https://doc.akka.io/d
 
 ## Quick start
 
-For the examples, we considering following proto domain model 
+For the examples, we are using the following proto domain model 
 
 ```proto
 message Item {
