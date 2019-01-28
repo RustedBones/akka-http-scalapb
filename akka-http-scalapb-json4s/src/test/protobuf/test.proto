@@ -3,6 +3,6 @@ syntax = "proto3";
 package fr.davit.generated;
 
 message TestMessage {
-    string stringField  = 1;
-    int32 numberFiled   = 2;
+    string string_field  = 1;
+    int32 number_field   = 2;
 }
