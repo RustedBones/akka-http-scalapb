@@ -1,8 +1,8 @@
 # akka-http-scalapb
 
 [![Build Status](https://travis-ci.org/RustedBones/akka-http-scalapb.svg?branch=master&style=flat)](https://travis-ci.org/RustedBones/akka-http-scalapb)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.davit/akka-http-scalapb_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.davit/akka-http-scalapb_2.12)
 [![Software License](https://img.shields.io/badge/license-Apache%202-brightgreen.svg?style=flat)](LICENSE)
-
 
 akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
