@@ -2,7 +2,7 @@ package fr.davit.akka.http.scaladsl.marshallers.scalapb
 
 import akka.http.javadsl.server.UnacceptedResponseContentTypeRejection
 import akka.http.scaladsl.model.headers.Accept
-import akka.http.scaladsl.model.{ContentType, ContentTypes, MediaTypes}
+import akka.http.scaladsl.model.{ContentType, ContentTypes, MediaRanges, MediaTypes}
 import akka.http.scaladsl.server.Directives.{complete, get}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import fr.davit.generated.test.TestMessage
@@ -27,6 +27,13 @@ class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest 
 
   "ScalaPbSupport" should "marshall in json by default" in new Fixture {
     Get() ~> get(complete(proto)) ~> check {
+      contentType shouldBe ContentTypes.`application/json`
+      responseAs[String] shouldBe json
+    }
+  }
+
+  it should "marshall in json by when range match both types" in new Fixture {
+    Get().withHeaders(Accept(MediaRanges.`application/*`)) ~> get(complete(proto)) ~> check {
       contentType shouldBe ContentTypes.`application/json`
       responseAs[String] shouldBe json
     }
