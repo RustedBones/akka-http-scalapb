@@ -36,17 +36,17 @@ lazy val commonSettings = Seq(
   )
 )
 
-lazy val root = (project in file("."))
-  .aggregate(`akka-http-scalapb`, `akka-http-scalapb-json4s`)
-  .settings(
-    publish / skip := true
-  )
-
-lazy val `akka-http-scalapb` = (project in file("akka-http-scalapb"))
+lazy val `akka-http-scalapb` = (project in file("."))
+  .dependsOn(`akka-http-scalapb-binary`, `akka-http-scalapb-json4s`)
+  .aggregate(`akka-http-scalapb-binary`, `akka-http-scalapb-json4s`)
   .settings(commonSettings: _*)
   .settings(ScalaPBSettings.default: _*)
 
-lazy val `akka-http-scalapb-json4s` = (project in file("akka-http-scalapb-json4s"))
+lazy val `akka-http-scalapb-binary` = (project in file("binary"))
+  .settings(commonSettings: _*)
+  .settings(ScalaPBSettings.default: _*)
+
+lazy val `akka-http-scalapb-json4s` = (project in file("json4s"))
   .settings(commonSettings: _*)
   .settings(ScalaPBSettings.default: _*)
   .settings(

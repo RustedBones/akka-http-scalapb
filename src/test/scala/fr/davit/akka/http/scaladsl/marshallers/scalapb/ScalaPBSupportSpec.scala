@@ -1,0 +1,54 @@
+package fr.davit.akka.http.scaladsl.marshallers.scalapb
+
+import akka.http.javadsl.server.UnacceptedResponseContentTypeRejection
+import akka.http.scaladsl.model.headers.Accept
+import akka.http.scaladsl.model.{ContentType, ContentTypes, MediaTypes}
+import akka.http.scaladsl.server.Directives.{complete, get}
+import akka.http.scaladsl.testkit.ScalatestRouteTest
+import fr.davit.generated.test.TestMessage
+import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
+import scalapb.json4s.JsonFormat
+
+class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest with BeforeAndAfterAll {
+
+
+  import ScalaPBSupport._
+
+  trait Fixture {
+    val proto = TestMessage("test", 42)
+    val json  = JsonFormat.toJsonString(proto)
+    val bytes  = TestMessage.toByteArray(proto)
+  }
+
+  override def afterAll(): Unit = {
+    cleanUp()
+    super.afterAll()
+  }
+
+  "ScalaPbSupport" should "marshall in json by default" in new Fixture {
+    Get() ~> get(complete(proto)) ~> check {
+      contentType shouldBe ContentTypes.`application/json`
+      responseAs[String] shouldBe json
+    }
+  }
+
+  it should "marshall in json when requested" in new Fixture {
+    Get().withHeaders(Accept(MediaTypes.`application/json`)) ~> get(complete(proto)) ~> check {
+      contentType shouldBe ContentTypes.`application/json`
+      responseAs[String] shouldBe json
+    }
+  }
+
+  it should "marshall in binary when requested" in new Fixture {
+    Get().withHeaders(Accept(ScalaPBBinarySupport.protobufMediaType)) ~> get(complete(proto)) ~> check {
+      contentType shouldBe (ScalaPBBinarySupport.protobufMediaType: ContentType)
+      responseAs[Array[Byte]] shouldBe bytes
+    }
+  }
+
+  it should "fail when Accept doesnt' match supported type" in new Fixture {
+    Get().withHeaders(Accept(MediaTypes.`text/html`)) ~> get(complete(proto)) ~> check {
+      rejection shouldBe a[UnacceptedResponseContentTypeRejection]
+    }
+  }
+}
