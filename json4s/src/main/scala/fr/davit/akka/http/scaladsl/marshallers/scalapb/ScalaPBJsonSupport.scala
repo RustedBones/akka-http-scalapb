@@ -8,7 +8,7 @@ import org.json4s.jackson.JsonMethods._
 import scalapb.{GeneratedMessage, GeneratedMessageCompanion, Message}
 import scalapb.json4s.{JsonFormatException, Parser, Printer}
 
-import scala.collection.generic.CanBuildFrom
+import scala.collection.compat._
 
 trait ScalaPBJsonSupport {
 
@@ -29,10 +29,10 @@ trait ScalaPBJsonSupport {
   }
 
   // scalapb doesn't offer the possibility to have an array as Json root object, but this can be supported by Json
-  implicit def scalaPBJsonCollUnmarshaller[T <: ProtoMessage[T]: GeneratedMessageCompanion, Coll[T]](
-      implicit b: CanBuildFrom[List[T], T, Coll[T]]): FromEntityUnmarshaller[Coll[T]] = {
+  implicit def scalaPBJsonCollUnmarshaller[T <: ProtoMessage[T]: GeneratedMessageCompanion, CC[_]](
+      implicit factory: Factory[T, CC[T]]): FromEntityUnmarshaller[CC[T]] = {
     json4sUnmarshaller.map {
-      case JArray(values) => values.map(parser.fromJson[T])(collection.breakOut)
+      case JArray(values) => values.iterator.map(parser.fromJson[T]).to(factory)
       case value          => throw new JsonFormatException(s"Expected an array, found $value")
     }
   }

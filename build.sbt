@@ -5,7 +5,7 @@ val repo     = "akka-http-scalapb"
 lazy val commonSettings = Seq(
   organization := "fr.davit",
   version := "0.1.1-SNAPSHOT",
-  crossScalaVersions := Seq("2.11.12", "2.12.8"),
+  crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.0"),
   scalaVersion := (ThisBuild / crossScalaVersions).value.last,
   Compile / compile / scalacOptions ++= Settings.scalacOptions(scalaVersion.value),
   homepage := Some(url(s"https://github.com/$username/$repo")),
@@ -28,8 +28,9 @@ lazy val commonSettings = Seq(
 
   libraryDependencies ++= Seq(
     Dependencies.akkaHttp,
-    Dependencies.Provided.akkaStream,
+    Dependencies.scalaCollectionCompat,
     Dependencies.scalaPB,
+    Dependencies.Provided.akkaStream,
     Dependencies.Test.akkaHttpTestkit,
     Dependencies.Test.akkaTestkit,
     Dependencies.Test.scalaTest
