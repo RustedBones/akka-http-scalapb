@@ -12,14 +12,14 @@ trait ScalaPBSupport {
   // Unmarshallers
   //--------------------------------------------------------------------------------------------------------------------
   implicit def scalaPbUnmarshaller[T <: ProtoMessage[T]: GeneratedMessageCompanion]: FromEntityUnmarshaller[T] = {
-    Unmarshaller.firstOf(ScalaPBJsonSupport.scalaPBJsonUnmarshaller[T], ScalaPBBinarySupport.scalaPBBinaryUnmarshaller[T])
+    Unmarshaller.firstOf(ScalaPBJsonSupport.scalaPBJsonUnmarshaller, ScalaPBBinarySupport.scalaPBBinaryUnmarshaller)
   }
 
   //--------------------------------------------------------------------------------------------------------------------
   // Marshallers
   //--------------------------------------------------------------------------------------------------------------------
   implicit def scalaPbMarshaller[T <: ProtoMessage[T]: GeneratedMessageCompanion]: ToEntityMarshaller[T] = {
-    Marshaller.oneOf(ScalaPBJsonSupport.scalaPBJsonMarshaller[T], ScalaPBBinarySupport.scalaPBBinaryMarshaller)
+    Marshaller.oneOf(ScalaPBJsonSupport.scalaPBJsonMarshaller, ScalaPBBinarySupport.scalaPBBinaryMarshaller)
   }
 
 }
