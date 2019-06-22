@@ -13,19 +13,13 @@ class ScalaPBBinarySupportSpec
   extends FlatSpec
     with Matchers
     with ScalaFutures
-    with ScalatestRouteTest
-    with BeforeAndAfterAll {
+    with ScalatestRouteTest {
 
   import ScalaPBBinarySupport._
 
   trait Fixture {
     val proto = TestMessage("test", 42)
     val bytes  = TestMessage.toByteArray(proto)
-  }
-
-  override def afterAll(): Unit = {
-    cleanUp()
-    super.afterAll()
   }
 
   "ScalaPBJsonSupport" should "marshall proto message to bytes" in new Fixture {

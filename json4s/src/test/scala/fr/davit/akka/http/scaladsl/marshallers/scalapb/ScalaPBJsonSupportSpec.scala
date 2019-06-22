@@ -14,8 +14,7 @@ class ScalaPBJsonSupportSpec
     extends FlatSpec
     with Matchers
     with ScalaFutures
-    with ScalatestRouteTest
-    with BeforeAndAfterAll {
+    with ScalatestRouteTest {
 
   import ScalaPBJsonSupport._
 
@@ -27,11 +26,6 @@ class ScalaPBJsonSupportSpec
   trait ArrayFixture {
     val proto = Seq(TestMessage("value 1", 1), TestMessage("value 2", 2))
     val json  = proto.map(JsonFormat.toJsonString).mkString("[", ",", "]")
-  }
-
-  override def afterAll(): Unit = {
-    cleanUp()
-    super.afterAll()
   }
 
   "ScalaPBJsonSupport" should "marshall proto message to json" in new Fixture {

@@ -9,7 +9,7 @@ import fr.davit.generated.test.TestMessage
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scalapb.json4s.JsonFormat
 
-class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest with BeforeAndAfterAll {
+class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest {
 
 
   import ScalaPBSupport._
@@ -18,11 +18,6 @@ class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest 
     val proto = TestMessage("test", 42)
     val json  = JsonFormat.toJsonString(proto)
     val bytes  = TestMessage.toByteArray(proto)
-  }
-
-  override def afterAll(): Unit = {
-    cleanUp()
-    super.afterAll()
   }
 
   "ScalaPbSupport" should "marshall in json by default" in new Fixture {
