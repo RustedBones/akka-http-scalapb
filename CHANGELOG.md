@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2.0
+## Unreleased
+
+Support various media types for binary format
+
+## 0.2.0 (2019-06-22)
 
 Add root project that supports both json/binary depending on the `Accept` header
 Add scala 2.13 support

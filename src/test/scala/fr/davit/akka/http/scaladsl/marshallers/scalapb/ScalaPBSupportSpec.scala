@@ -42,9 +42,11 @@ class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest 
   }
 
   it should "marshall in binary when requested" in new Fixture {
-    Get().withHeaders(Accept(ScalaPBBinarySupport.protobufMediaType)) ~> get(complete(proto)) ~> check {
-      contentType shouldBe (ScalaPBBinarySupport.protobufMediaType: ContentType)
-      responseAs[Array[Byte]] shouldBe bytes
+    ScalaPBBinarySupport.protobufMediaTypes.foreach { mediaType =>
+      Get().withHeaders(Accept(mediaType)) ~> get(complete(proto)) ~> check {
+        contentType shouldBe (mediaType: ContentType)
+        responseAs[Array[Byte]] shouldBe bytes
+      }
     }
   }
 
