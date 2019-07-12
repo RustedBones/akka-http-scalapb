@@ -80,15 +80,14 @@ class MyProtoService extends Directives with ScalaPBSupport {
 }
 ```
 
-Unmarshalling of the generated classes depends on the `Content-Type` header sent by the client:
-- `Content-Type: application/protobuf`: binary
+Marshalling/Unmarshalling of the generated classes depends on the `Accept`/`Content-Type` header sent by the client:
 - `Content-Type: application/json`: json
+- `Content-Type: application/x-protobuf`: binary
+- `Content-Type: application/x-protobuffer`: binary
+- `Content-Type: application/protobuf`: binary
+- `Content-Type: application/vnd.google.protobuf`: binary
 
-
-Marshalling of your generated classes depends on the the `Accept` header sent by the client:
-- `Accept: application/protobuf`: binary marshalling
-- `Accept: application/json`: json marshalling
-- no `Accept` header or matching both (eg `Accept: application/*`): json marshalling (json is chosen as default marshaller for its broader adoption and human readability purpose)
+No `Accept` header or matching several (eg `Accept: application/*`) will take the 1st matching type from the above list.
 
 
 ### Json only
