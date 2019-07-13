@@ -11,8 +11,9 @@ akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
 | Version | Release date | Akka Http version | ScalaPB version          | Scala versions                |
 | ------- | ------------ | ----------------- | ------------------------ | ----------------------------- |
-| `0.1.0` | 2019-01-27   | `10.1.7`          | `0.8.4` (`0.7.2` json4s) | `2.11.12`, `2.12.8`           |
+| `0.2.1` | 2019-07-13   | `10.1.8`          | `0.9.0` (`0.9.2` json4s) | `2.11.12`, `2.12.8`, `2.13.0` |
 | `0.2.0` | 2019-06-22   | `10.1.8`          | `0.9.0` (`0.9.2` json4s) | `2.11.12`, `2.12.8`, `2.13.0` |
+| `0.1.0` | 2019-01-27   | `10.1.7`          | `0.8.4` (`0.7.2` json4s) | `2.11.12`, `2.12.8`           |
 
 The complete list can be found in the [CHANGELOG](CHANGELOG.md) file.
 
