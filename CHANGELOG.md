@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.1 (2019-07-13)
+
 Support various media types for binary format
 
 ## 0.2.0 (2019-06-22)
