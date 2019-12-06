@@ -27,13 +27,12 @@ import scalapb.json4s.JsonFormat
 
 class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest {
 
-
   import ScalaPBSupport._
 
   trait Fixture {
     val proto = TestMessage("test", 42)
     val json  = JsonFormat.toJsonString(proto)
-    val bytes  = TestMessage.toByteArray(proto)
+    val bytes = TestMessage.toByteArray(proto)
   }
 
   "ScalaPbSupport" should "marshall in json by default" in new Fixture {

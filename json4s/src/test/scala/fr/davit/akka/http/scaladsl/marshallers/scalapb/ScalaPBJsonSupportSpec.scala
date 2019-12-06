@@ -26,11 +26,7 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
 import scalapb.json4s.JsonFormat
 
-class ScalaPBJsonSupportSpec
-    extends FlatSpec
-    with Matchers
-    with ScalaFutures
-    with ScalatestRouteTest {
+class ScalaPBJsonSupportSpec extends FlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
 
   import ScalaPBJsonSupport._
 
