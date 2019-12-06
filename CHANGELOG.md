@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+Add licence header
 Update all dependencies
 
 ## 0.2.1 (2019-07-13)
