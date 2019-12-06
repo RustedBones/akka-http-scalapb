@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+Update all dependencies
+
 ## 0.2.1 (2019-07-13)
 
 Support various media types for binary format
