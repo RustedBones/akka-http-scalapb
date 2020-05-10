@@ -38,7 +38,7 @@ trait ScalaPBJsonSupport {
     Unmarshaller.stringUnmarshaller.forContentTypes(MediaTypes.`application/json`).map(parse(_))
   }
 
-  implicit def scalaPBJsonUnmarshaller[T <:GeneratedMessage: GeneratedMessageCompanion]: FromEntityUnmarshaller[T] = {
+  implicit def scalaPBJsonUnmarshaller[T <: GeneratedMessage: GeneratedMessageCompanion]: FromEntityUnmarshaller[T] = {
     json4sUnmarshaller.map(parser.fromJson[T])
   }
 
