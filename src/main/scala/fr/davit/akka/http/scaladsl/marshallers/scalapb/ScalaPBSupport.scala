@@ -18,23 +18,21 @@ package fr.davit.akka.http.scaladsl.marshallers.scalapb
 
 import akka.http.scaladsl.marshalling.{Marshaller, ToEntityMarshaller}
 import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, Unmarshaller}
-import scalapb.{GeneratedMessage, GeneratedMessageCompanion, Message}
+import scalapb.{GeneratedMessage, GeneratedMessageCompanion}
 
 trait ScalaPBSupport {
-
-  type ProtoMessage[T] = GeneratedMessage with Message[T]
 
   //--------------------------------------------------------------------------------------------------------------------
   // Unmarshallers
   //--------------------------------------------------------------------------------------------------------------------
-  implicit def scalaPbUnmarshaller[T <: ProtoMessage[T]: GeneratedMessageCompanion]: FromEntityUnmarshaller[T] = {
+  implicit def scalaPbUnmarshaller[T <: GeneratedMessage: GeneratedMessageCompanion]: FromEntityUnmarshaller[T] = {
     Unmarshaller.firstOf(ScalaPBJsonSupport.scalaPBJsonUnmarshaller, ScalaPBBinarySupport.scalaPBBinaryUnmarshaller)
   }
 
   //--------------------------------------------------------------------------------------------------------------------
   // Marshallers
   //--------------------------------------------------------------------------------------------------------------------
-  implicit def scalaPbMarshaller[T <: ProtoMessage[T]: GeneratedMessageCompanion]: ToEntityMarshaller[T] = {
+  implicit def scalaPbMarshaller[T <: GeneratedMessage: GeneratedMessageCompanion]: ToEntityMarshaller[T] = {
     Marshaller.oneOf(ScalaPBJsonSupport.scalaPBJsonMarshaller, ScalaPBBinarySupport.scalaPBBinaryMarshaller)
   }
 

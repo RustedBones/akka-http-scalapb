@@ -3,7 +3,9 @@
 ## Unreleased
 
 Add licence header
+Update scalaPB to 0.10
 Update all dependencies
+Drop scala 2.11 support
 
 ## 0.2.1 (2019-07-13)
 
