@@ -19,11 +19,9 @@ package fr.davit.akka.http.scaladsl.marshallers.scalapb
 import akka.http.scaladsl.marshalling.{Marshaller, ToEntityMarshaller}
 import akka.http.scaladsl.model.{ContentTypeRange, MediaType}
 import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, Unmarshaller}
-import scalapb.{GeneratedMessage, GeneratedMessageCompanion, Message}
+import scalapb.{GeneratedMessage, GeneratedMessageCompanion}
 
 trait ScalaPBBinarySupport {
-
-  type ProtoMessage[T] = GeneratedMessage with Message[T]
 
   /**
     * There is no official media type for protocol buffers registered
@@ -39,7 +37,7 @@ trait ScalaPBBinarySupport {
   //--------------------------------------------------------------------------------------------------------------------
   // Unmarshallers
   //--------------------------------------------------------------------------------------------------------------------
-  implicit def scalaPBBinaryUnmarshaller[T <: ProtoMessage[T]](
+  implicit def scalaPBBinaryUnmarshaller[T <: GeneratedMessage](
       implicit gmc: GeneratedMessageCompanion[T]
   ): FromEntityUnmarshaller[T] = {
     Unmarshaller.byteArrayUnmarshaller
@@ -50,7 +48,7 @@ trait ScalaPBBinarySupport {
   //--------------------------------------------------------------------------------------------------------------------
   // Marshallers
   //--------------------------------------------------------------------------------------------------------------------
-  implicit def scalaPBBinaryMarshaller[T <: ProtoMessage[T]](
+  implicit def scalaPBBinaryMarshaller[T <: GeneratedMessage](
       implicit gmc: GeneratedMessageCompanion[T]
   ): ToEntityMarshaller[T] = {
     Marshaller.oneOf(protobufMediaTypes.map(Marshaller.ByteArrayMarshaller.wrap(_)(gmc.toByteArray)): _*)
