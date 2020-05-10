@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.2 (2020-05-10)
+
 Add licence header
 Update scalaPB to 0.10
 Update all dependencies

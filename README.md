@@ -1,6 +1,6 @@
 # akka-http-scalapb
 
-[![Build Status](https://travis-ci.org/RustedBones/akka-http-scalapb.svg?branch=master&style=flat)](https://travis-ci.org/RustedBones/akka-http-scalapb)
+[![Scala CI](https://github.com/RustedBones/akka-http-scalapb/workflows/Scala%20CI/badge.svg)](https://github.com/RustedBones/akka-http-scalapb/actions?query=workflow%3A"Scala+CI")
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.davit/akka-http-scalapb_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.davit/akka-http-scalapb_2.12)
 [![Software License](https://img.shields.io/badge/license-Apache%202-brightgreen.svg?style=flat)](LICENSE)
 
@@ -9,11 +9,12 @@ akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
 ## Versions
 
-| Version | Release date | Akka Http version | ScalaPB version          | Scala versions                |
-| ------- | ------------ | ----------------- | ------------------------ | ----------------------------- |
-| `0.2.1` | 2019-07-13   | `10.1.8`          | `0.9.0` (`0.9.2` json4s) | `2.11.12`, `2.12.8`, `2.13.0` |
-| `0.2.0` | 2019-06-22   | `10.1.8`          | `0.9.0` (`0.9.2` json4s) | `2.11.12`, `2.12.8`, `2.13.0` |
-| `0.1.0` | 2019-01-27   | `10.1.7`          | `0.8.4` (`0.7.2` json4s) | `2.11.12`, `2.12.8`           |
+| Version | Release date | Akka Http version | ScalaPB version            | Scala versions                 |
+| ------- | ------------ | ----------------- | -------------------------- | ------------------------------ |
+| `0.2.2` | 2020-05-10   | `10.1.11`         | `0.10.3` (`0.10.1` json4s) | `2.13.2`, `2.12.11`            |
+| `0.2.1` | 2019-07-13   | `10.1.8`          | `0.9.0`  (`0.9.2` json4s)  | `2.13.0`, `2.12.8`, `2.11.12`  |
+| `0.2.0` | 2019-06-22   | `10.1.8`          | `0.9.0`  (`0.9.2` json4s)  | `2.13.0`, `2.12.8`, `2.11.12`  |
+| `0.1.0` | 2019-01-27   | `10.1.7`          | `0.8.4`  (`0.7.2` json4s)  | `2.12.8`, `2.11.12`            |
 
 The complete list can be found in the [CHANGELOG](CHANGELOG.md) file.
 
