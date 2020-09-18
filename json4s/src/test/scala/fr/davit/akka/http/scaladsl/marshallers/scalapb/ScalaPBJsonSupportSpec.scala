@@ -17,16 +17,17 @@
 package fr.davit.akka.http.scaladsl.marshallers.scalapb
 
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
-import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.http.scaladsl.unmarshalling.Unmarshaller.UnsupportedContentTypeException
 import fr.davit.generated.test.TestMessage
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scalapb.json4s.JsonFormat
 
-class ScalaPBJsonSupportSpec extends FlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
+class ScalaPBJsonSupportSpec extends AnyFlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
 
   import ScalaPBJsonSupport._
 

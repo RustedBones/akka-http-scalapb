@@ -22,10 +22,11 @@ import akka.http.scaladsl.model.{ContentType, ContentTypes, MediaRanges, MediaTy
 import akka.http.scaladsl.server.Directives.{complete, get}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import fr.davit.generated.test.TestMessage
-import org.scalatest.{BeforeAndAfterAll, FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scalapb.json4s.JsonFormat
 
-class ScalaPBSupportSpec extends FlatSpec with Matchers with ScalatestRouteTest {
+class ScalaPBSupportSpec extends AnyFlatSpec with Matchers with ScalatestRouteTest {
 
   import ScalaPBSupport._
 
