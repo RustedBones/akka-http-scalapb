@@ -1,6 +1,6 @@
 # akka-http-scalapb
 
-[![Scala CI](https://github.com/RustedBones/akka-http-scalapb/workflows/Scala%20CI/badge.svg)](https://github.com/RustedBones/akka-http-scalapb/actions?query=workflow%3A"Scala+CI")
+[![Scala CI](https://github.com/RustedBones/akka-http-scalapb/workflows/Scala%20CI/badge.svg)](https://github.com/RustedBones/akka-http-scalapb/actions?query=branch%3Amaster+workflow%3A"Continuous+Integration")
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.davit/akka-http-scalapb_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.davit/akka-http-scalapb_2.12)
 [![Software License](https://img.shields.io/badge/license-Apache%202-brightgreen.svg?style=flat)](LICENSE)
 
@@ -11,6 +11,7 @@ akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
 | Version | Release date | Akka Http version | ScalaPB version            | Scala versions                 |
 | ------- | ------------ | ----------------- | -------------------------- | ------------------------------ |
+| `0.2.3` | 2020-09-18   | `10.2.0`          | `0.10.8` (`0.10.1` json4s) | `2.13.3`, `2.12.12`            |
 | `0.2.2` | 2020-05-10   | `10.1.11`         | `0.10.3` (`0.10.1` json4s) | `2.13.2`, `2.12.11`            |
 | `0.2.1` | 2019-07-13   | `10.1.8`          | `0.9.0`  (`0.9.2` json4s)  | `2.13.0`, `2.12.8`, `2.11.12`  |
 | `0.2.0` | 2019-06-22   | `10.1.8`          | `0.9.0`  (`0.9.2` json4s)  | `2.13.0`, `2.12.8`, `2.11.12`  |
@@ -23,21 +24,8 @@ The complete list can be found in the [CHANGELOG](CHANGELOG.md) file.
 Libraries are published to Maven Central. Add to your `build.sbt`:
 
 ```scala
-libraryDependencies += "fr.davit" %% "akka-http-scalapb"        % <version> // binary & json support
+libraryDependencies += "fr.davit" %% "akka-http-scalapb" % <version> // binary & json support
 ```
-
-**Important**: Since akka-http 10.1.0, akka-stream transitive dependency is marked as provided. You should now explicitly
-include it in your build.
-
-> [...] we changed the policy not to depend on akka-stream explicitly anymore but mark it as a provided dependency in our build. 
-That means that you will always have to add a manual dependency to akka-stream. Please make sure you have chosen and 
-added a dependency to akka-stream when updating to the new version
-
-```scala
-libraryDependencies += "com.typesafe.akka" %% "akka-stream" % <version> // Only Akka 2.5 supported
-```
-
-For more details, see the akka-http 10.1.x [release notes](https://doc.akka.io/docs/akka-http/current/release-notes/10.1.x.html)
 
 ## Quick start
 
@@ -58,27 +46,23 @@ The implicit marshallers and unmarshallers for your generated proto classes are 
 simply need to have them in scope.
 
 ```scala
-import akka.http.scaladsl.server.Directives
-import fr.davit.akka.http.scaladsl.marshallers.scalapb.ScalaPBSupport
+import akka.http.scaladsl.server.Directives._
+import fr.davit.akka.http.scaladsl.marshallers.scalapb.ScalaPBSupport._
 
+object MyProtoService {
 
-class MyProtoService extends Directives with ScalaPBSupport {
-
-  // format: OFF
   val route =
     get {
       pathSingleSlash {
         complete(Item("thing", 42))
       }
-    } ~
-    post {
+    } ~ post {
       entity(as[Order]) { order =>
         val itemsCount = order.items.size
         val itemNames = order.items.map(_.name).mkString(", ")
         complete(s"Ordered $itemsCount items: $itemNames")
       }
     }
-  // format: ON
 }
 ```
 
@@ -97,7 +81,7 @@ No `Accept` header or matching several (eg `Accept: application/*`) will take th
 If you are using scalaPB for json (un)marshalling only, you can use `ScalaPBJsonSupport` from the sub module
 
 ```scala
-libraryDependencies += "fr.davit" %% "akka-http-scalapb-json4s"        % <version> // json support only
+libraryDependencies += "fr.davit" %% "akka-http-scalapb-json4s" % <version> // json support only
 ```
 
 ### Binary only 
@@ -105,7 +89,7 @@ libraryDependencies += "fr.davit" %% "akka-http-scalapb-json4s"        % <versio
 If you are using scalaPB for binary (un)marshalling only, you can use `ScalaPBBinarySupport` form the sub module
 
 ```scala
-libraryDependencies += "fr.davit" %% "akka-http-scalapb-binary"        % <version> // binary support only
+libraryDependencies += "fr.davit" %% "akka-http-scalapb-binary" % <version> // binary support only
 ```
 
 ## Limitation
