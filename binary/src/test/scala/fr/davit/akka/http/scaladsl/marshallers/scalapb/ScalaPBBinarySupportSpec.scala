@@ -24,9 +24,10 @@ import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.http.scaladsl.unmarshalling.Unmarshaller.UnsupportedContentTypeException
 import fr.davit.generated.test.TestMessage
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ScalaPBBinarySupportSpec extends FlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
+class ScalaPBBinarySupportSpec extends AnyFlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
 
   import ScalaPBBinarySupport._
 
