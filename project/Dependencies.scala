@@ -7,7 +7,7 @@ object Dependencies {
     val akkaHttp              = "10.2.0"
     val scalaCollectionCompat = "2.2.0"
     val scalaPB               = "0.10.8"
-    val scalaPBJson4s         = "0.10.1"
+    val scalaPBJson4s         = "0.10.3"
     val scalaTest             = "3.2.2"
   }
 
