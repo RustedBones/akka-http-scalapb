@@ -28,7 +28,6 @@ import org.scalatest.matchers.should.Matchers
 import scalapb.json4s.JsonFormat
 
 class ScalaPBJsonSupportSpec extends AnyFlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
-
   import ScalaPBJsonSupport._
 
   trait Fixture {
@@ -69,5 +68,4 @@ class ScalaPBJsonSupportSpec extends AnyFlatSpec with Matchers with ScalaFutures
     val entity = HttpEntity(ContentTypes.`text/plain(UTF-8)`, json)
     Unmarshal(entity).to[TestMessage].failed.futureValue shouldBe an[UnsupportedContentTypeException]
   }
-
 }

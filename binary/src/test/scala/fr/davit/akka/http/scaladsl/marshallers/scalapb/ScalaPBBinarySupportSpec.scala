@@ -28,7 +28,6 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class ScalaPBBinarySupportSpec extends AnyFlatSpec with Matchers with ScalaFutures with ScalatestRouteTest {
-
   import ScalaPBBinarySupport._
 
   trait Fixture {
@@ -63,5 +62,4 @@ class ScalaPBBinarySupportSpec extends AnyFlatSpec with Matchers with ScalaFutur
     val entity = HttpEntity(ContentTypes.`application/octet-stream`, bytes)
     Unmarshal(entity).to[TestMessage].failed.futureValue shouldBe an[UnsupportedContentTypeException]
   }
-
 }

@@ -35,7 +35,6 @@ trait ScalaPBSupport {
   implicit def scalaPbMarshaller[T <: GeneratedMessage: GeneratedMessageCompanion]: ToEntityMarshaller[T] = {
     Marshaller.oneOf(ScalaPBJsonSupport.scalaPBJsonMarshaller, ScalaPBBinarySupport.scalaPBBinaryMarshaller)
   }
-
 }
 
 object ScalaPBSupport extends ScalaPBSupport
