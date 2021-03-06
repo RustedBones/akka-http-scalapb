@@ -42,8 +42,8 @@ trait ScalaPBJsonSupport {
   }
 
   // scalapb doesn't offer the possibility to have an array as Json root object, but this can be supported by Json
-  implicit def scalaPBJsonCollUnmarshaller[T <: GeneratedMessage: GeneratedMessageCompanion, CC[_]](
-      implicit factory: Factory[T, CC[T]]
+  implicit def scalaPBJsonCollUnmarshaller[T <: GeneratedMessage: GeneratedMessageCompanion, CC[_]](implicit
+      factory: Factory[T, CC[T]]
   ): FromEntityUnmarshaller[CC[T]] = {
     json4sUnmarshaller.map {
       case JArray(values) => values.iterator.map(parser.fromJson[T]).to(factory)

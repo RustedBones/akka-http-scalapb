@@ -23,8 +23,7 @@ import scalapb.{GeneratedMessage, GeneratedMessageCompanion}
 
 trait ScalaPBBinarySupport {
 
-  /**
-    * There is no official media type for protocol buffers registered
+  /** There is no official media type for protocol buffers registered
     * those are some of the more popular choices being used today, x-protobuf being the default for the google-http-client
     * see https://googleapis.dev/java/google-http-client/latest/com/google/api/client/protobuf/ProtocolBuffers.html
     */
@@ -37,8 +36,8 @@ trait ScalaPBBinarySupport {
   //--------------------------------------------------------------------------------------------------------------------
   // Unmarshallers
   //--------------------------------------------------------------------------------------------------------------------
-  implicit def scalaPBBinaryUnmarshaller[T <: GeneratedMessage](
-      implicit gmc: GeneratedMessageCompanion[T]
+  implicit def scalaPBBinaryUnmarshaller[T <: GeneratedMessage](implicit
+      gmc: GeneratedMessageCompanion[T]
   ): FromEntityUnmarshaller[T] = {
     Unmarshaller.byteArrayUnmarshaller
       .forContentTypes(protobufMediaTypes.map(ContentTypeRange.apply): _*)
@@ -48,8 +47,8 @@ trait ScalaPBBinarySupport {
   //--------------------------------------------------------------------------------------------------------------------
   // Marshallers
   //--------------------------------------------------------------------------------------------------------------------
-  implicit def scalaPBBinaryMarshaller[T <: GeneratedMessage](
-      implicit gmc: GeneratedMessageCompanion[T]
+  implicit def scalaPBBinaryMarshaller[T <: GeneratedMessage](implicit
+      gmc: GeneratedMessageCompanion[T]
   ): ToEntityMarshaller[T] = {
     Marshaller.oneOf(protobufMediaTypes.map(Marshaller.ByteArrayMarshaller.wrap(_)(gmc.toByteArray)): _*)
   }
