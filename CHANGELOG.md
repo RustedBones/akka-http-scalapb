@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Update dependencies
+
 ## v0.2.3 (2020-09-18)
 
 - Update dependencies
