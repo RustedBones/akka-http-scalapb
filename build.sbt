@@ -1,4 +1,3 @@
-
 // General info
 val username = "RustedBones"
 val repo     = "akka-http-scalapb"
@@ -19,7 +18,6 @@ ThisBuild / githubWorkflowBuild := Seq(
 ThisBuild / githubWorkflowTargetBranches := Seq("master")
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
-
 lazy val commonSettings = Seq(
   organization := "fr.davit",
   organizationName := "Michel Davit",
@@ -36,7 +34,8 @@ lazy val commonSettings = Seq(
       id = s"$username",
       name = "Michel Davit",
       email = "michel@davit.fr",
-      url = url(s"https://github.com/$username"))
+      url = url(s"https://github.com/$username")
+    )
   ),
   publishMavenStyle := true,
   Test / publishArtifact := false,
@@ -45,7 +44,6 @@ lazy val commonSettings = Seq(
     username <- sys.env.get("SONATYPE_USERNAME")
     password <- sys.env.get("SONATYPE_PASSWORD")
   } yield Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password)).toSeq,
-
   libraryDependencies ++= Seq(
     Dependencies.akkaHttp,
     Dependencies.scalaCollectionCompat,
