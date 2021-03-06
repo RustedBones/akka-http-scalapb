@@ -7,9 +7,9 @@ object ScalaPBSettings {
   val default: Seq[SettingsDefinition] = {
     (inConfig(Test)(sbtprotoc.ProtocPlugin.protobufConfigSettings): SettingsDefinition) +:
       Seq(Compile, Test).map { configuration =>
-      configuration / PB.targets := Seq(
-        scalapb.gen(grpc = false) -> (configuration / sourceManaged).value / "protobuf"
-      )
-    }
+        configuration / PB.targets := Seq(
+          scalapb.gen(grpc = false) -> (configuration / sourceManaged).value / "protobuf"
+        )
+      }
   }
 }

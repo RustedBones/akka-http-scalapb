@@ -27,7 +27,6 @@ import org.scalatest.matchers.should.Matchers
 import scalapb.json4s.JsonFormat
 
 class ScalaPBSupportSpec extends AnyFlatSpec with Matchers with ScalatestRouteTest {
-
   import ScalaPBSupport._
 
   trait Fixture {

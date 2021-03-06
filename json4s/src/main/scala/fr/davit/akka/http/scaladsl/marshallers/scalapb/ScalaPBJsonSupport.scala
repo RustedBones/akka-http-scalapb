@@ -27,7 +27,6 @@ import scalapb.{GeneratedMessage, GeneratedMessageCompanion}
 import scala.collection.compat._
 
 trait ScalaPBJsonSupport {
-
   protected lazy val printer = new Printer()
   protected lazy val parser  = new Parser()
 
