@@ -4,7 +4,7 @@ object Dependencies {
 
   object Versions {
     val akka                  = "2.6.15"
-    val akkaHttp              = "10.2.6"
+    val akkaHttp              = "10.2.7"
     val scalaCollectionCompat = "2.5.0"
     val scalaPB               = "0.11.5"
     val scalaPBJson4s         = "0.11.1"
