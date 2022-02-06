@@ -22,16 +22,16 @@ import scalapb.{GeneratedMessage, GeneratedMessageCompanion}
 
 trait ScalaPBSupport {
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   // Unmarshallers
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   implicit def scalaPbUnmarshaller[T <: GeneratedMessage: GeneratedMessageCompanion]: FromEntityUnmarshaller[T] = {
     Unmarshaller.firstOf(ScalaPBJsonSupport.scalaPBJsonUnmarshaller, ScalaPBBinarySupport.scalaPBBinaryUnmarshaller)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   // Marshallers
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   implicit def scalaPbMarshaller[T <: GeneratedMessage: GeneratedMessageCompanion]: ToEntityMarshaller[T] = {
     Marshaller.oneOf(ScalaPBJsonSupport.scalaPBJsonMarshaller, ScalaPBBinarySupport.scalaPBBinaryMarshaller)
   }
