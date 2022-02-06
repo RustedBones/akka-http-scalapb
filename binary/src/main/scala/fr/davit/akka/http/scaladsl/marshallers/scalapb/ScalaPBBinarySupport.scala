@@ -23,9 +23,9 @@ import scalapb.{GeneratedMessage, GeneratedMessageCompanion}
 
 trait ScalaPBBinarySupport {
 
-  /** There is no official media type for protocol buffers registered
-    * those are some of the more popular choices being used today, x-protobuf being the default for the google-http-client
-    * see https://googleapis.dev/java/google-http-client/latest/com/google/api/client/protobuf/ProtocolBuffers.html
+  /** There is no official media type for protocol buffers registered those are some of the more popular choices being
+    * used today, x-protobuf being the default for the google-http-client see
+    * https://googleapis.dev/java/google-http-client/latest/com/google/api/client/protobuf/ProtocolBuffers.html
     */
   lazy val protobufMediaTypes: Seq[MediaType.Binary] = {
     List("x-protobuf", "x-protobuffer", "protobuf", "vnd.google.protobuf").map { t =>
@@ -33,9 +33,9 @@ trait ScalaPBBinarySupport {
     }
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   // Unmarshallers
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   implicit def scalaPBBinaryUnmarshaller[T <: GeneratedMessage](implicit
       gmc: GeneratedMessageCompanion[T]
   ): FromEntityUnmarshaller[T] = {
@@ -44,9 +44,9 @@ trait ScalaPBBinarySupport {
       .map(gmc.parseFrom)
   }
 
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   // Marshallers
-  //--------------------------------------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------------------------------------
   implicit def scalaPBBinaryMarshaller[T <: GeneratedMessage](implicit
       gmc: GeneratedMessageCompanion[T]
   ): ToEntityMarshaller[T] = {
