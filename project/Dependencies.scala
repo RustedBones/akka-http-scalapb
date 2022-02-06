@@ -3,11 +3,11 @@ import sbt._
 object Dependencies {
 
   object Versions {
-    val akka                  = "2.6.15"
+    val akka                  = "2.6.18"
     val akkaHttp              = "10.2.7"
-    val scalaCollectionCompat = "2.5.0"
+    val scalaCollectionCompat = "2.6.0"
     val scalaPB               = "0.11.5"
-    val scalaPBJson4s         = "0.11.1"
+    val scalaPBJson4s         = "0.12.0"
     val scalaTest             = "3.2.9"
   }
 
