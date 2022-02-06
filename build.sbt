@@ -45,13 +45,13 @@ lazy val commonSettings = Seq(
     password <- sys.env.get("SONATYPE_PASSWORD")
   } yield Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", username, password)).toSeq,
   libraryDependencies ++= Seq(
-    Dependencies.akkaHttp,
-    Dependencies.scalaCollectionCompat,
-    Dependencies.scalaPB,
-    Dependencies.Provided.akkaStream,
-    Dependencies.Test.akkaHttpTestkit,
-    Dependencies.Test.akkaTestkit,
-    Dependencies.Test.scalaTest
+    Dependencies.AkkaHttp,
+    Dependencies.ScalaCollectionCompat,
+    Dependencies.ScalaPB,
+    Dependencies.Provided.AkkaStream,
+    Dependencies.Test.AkkaHttpTestkit,
+    Dependencies.Test.AkkaTestkit,
+    Dependencies.Test.ScalaTest
   )
 )
 
@@ -70,6 +70,6 @@ lazy val `akka-http-scalapb-json4s` = (project in file("json4s"))
   .settings(ScalaPBSettings.default: _*)
   .settings(
     libraryDependencies ++= Seq(
-      Dependencies.scalaPbJson4s
+      Dependencies.ScalaPbJson4s
     )
   )
