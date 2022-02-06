@@ -3,26 +3,26 @@ import sbt._
 object Dependencies {
 
   object Versions {
-    val akka                  = "2.6.18"
-    val akkaHttp              = "10.2.7"
-    val scalaCollectionCompat = "2.6.0"
-    val scalaPB               = "0.11.5"
-    val scalaPBJson4s         = "0.12.0"
-    val scalaTest             = "3.2.11"
+    val Akka                  = "2.6.18"
+    val AkkaHttp              = "10.2.7"
+    val ScalaCollectionCompat = "2.6.0"
+    val ScalaPB               = "0.11.5"
+    val ScalaPBJson4s         = "0.12.0"
+    val ScalaTest             = "3.2.11"
   }
 
-  val akkaHttp              = "com.typesafe.akka"      %% "akka-http"               % Versions.akkaHttp
-  val scalaCollectionCompat = "org.scala-lang.modules" %% "scala-collection-compat" % Versions.scalaCollectionCompat
-  val scalaPB               = "com.thesamet.scalapb"   %% "scalapb-runtime"         % Versions.scalaPB
-  val scalaPbJson4s         = "com.thesamet.scalapb"   %% "scalapb-json4s"          % Versions.scalaPBJson4s
+  val AkkaHttp              = "com.typesafe.akka"      %% "akka-http"               % Versions.AkkaHttp
+  val ScalaCollectionCompat = "org.scala-lang.modules" %% "scala-collection-compat" % Versions.ScalaCollectionCompat
+  val ScalaPB               = "com.thesamet.scalapb"   %% "scalapb-runtime"         % Versions.ScalaPB
+  val ScalaPbJson4s         = "com.thesamet.scalapb"   %% "scalapb-json4s"          % Versions.ScalaPBJson4s
 
   object Provided {
-    val akkaStream = "com.typesafe.akka" %% "akka-stream" % Versions.akka % "provided"
+    val AkkaStream = "com.typesafe.akka" %% "akka-stream" % Versions.Akka % "provided"
   }
 
   object Test {
-    val akkaHttpTestkit = "com.typesafe.akka" %% "akka-http-testkit" % Versions.akkaHttp  % "test"
-    val akkaTestkit     = "com.typesafe.akka" %% "akka-testkit"      % Versions.akka      % "test"
-    val scalaTest       = "org.scalatest"     %% "scalatest"         % Versions.scalaTest % "test"
+    val AkkaHttpTestkit = "com.typesafe.akka" %% "akka-http-testkit" % Versions.AkkaHttp  % "test"
+    val AkkaTestkit     = "com.typesafe.akka" %% "akka-testkit"      % Versions.Akka      % "test"
+    val ScalaTest       = "org.scalatest"     %% "scalatest"         % Versions.ScalaTest % "test"
   }
 }
