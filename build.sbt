@@ -2,13 +2,6 @@
 val username = "RustedBones"
 val repo     = "akka-http-scalapb"
 
-lazy val filterScalacOptions = { options: Seq[String] =>
-  options.filterNot { o =>
-    // get rid of value discard
-    o == "-Ywarn-value-discard" || o == "-Wvalue-discard"
-  }
-}
-
 // for sbt-github-actions
 ThisBuild / crossScalaVersions := Seq("2.13.8", "2.12.15")
 ThisBuild / scalaVersion := crossScalaVersions.value.head
@@ -22,7 +15,6 @@ ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 lazy val commonSettings = Seq(
   organization := "fr.davit",
   organizationName := "Michel Davit",
-  scalacOptions ~= filterScalacOptions,
   homepage := Some(url(s"https://github.com/$username/$repo")),
   licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt")),
   startYear := Some(2019),
