@@ -3,7 +3,7 @@ import sbt._
 object Dependencies {
 
   object Versions {
-    val Akka                  = "2.6.18"
+    val Akka                  = "2.6.19"
     val AkkaHttp              = "10.2.7"
     val ScalaCollectionCompat = "2.7.0"
     val ScalaPB               = "0.11.8"
