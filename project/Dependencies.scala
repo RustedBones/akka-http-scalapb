@@ -8,7 +8,7 @@ object Dependencies {
     val ScalaCollectionCompat = "2.7.0"
     val ScalaPB               = "0.11.10"
     val ScalaPBJson4s         = "0.12.0"
-    val ScalaTest             = "3.2.12"
+    val ScalaTest             = "3.2.17"
   }
 
   val AkkaHttp              = "com.typesafe.akka"      %% "akka-http"               % Versions.AkkaHttp
