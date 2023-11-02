@@ -7,6 +7,9 @@
 
 akka-http protobuf and json marshalling/unmarshalling for ScalaPB messages
 
+After the akka [licencing change](https://www.lightbend.com/blog/why-we-are-changing-the-license-for-akka),
+no further development is expected on `akka-http-scalapb`.
+If you're migrating to pekko-http, see [pekko-http-scalapb](https://github.com/RustedBones/pekko-http-scalapb).
 
 ## Versions
 
